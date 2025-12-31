@@ -1,0 +1,78 @@
+Great choice 🎉 Canva is very good for clean and professional academic/technical videos. Since you’ll combine presentation slides (from Canva) + your MATLAB demo, here’s a step-by-step workflow to make the best video:
+
+🎬 Workflow for Your Bidirectional DC-DC Converter Video with Canva
+1. Plan Your Flow
+
+Follow the slide structure I gave you earlier (Title → Motivation → Principle → Circuit → Control → MATLAB Demo → Applications → Conclusion).
+
+Keep each slide short (max 4–5 bullet points) and use visuals/diagrams instead of heavy text.
+
+2. Design Slides in Canva
+
+Choose a clean academic template (white background, blue/green/gray accents).
+
+Use icons/illustrations from Canva library (battery, EV, solar panel, arrows).
+
+For formulas (like buck/boost equations), use LaTeX rendered images (Canva doesn’t support LaTeX directly, but you can generate the formula as an image and upload).
+
+Keep font consistent (e.g., Montserrat or Open Sans).
+
+Use slide animations like fade in or pop for arrows and diagrams.
+
+3. Narration / Voice-over
+
+Decide: Do you want to record yourself speaking or just add background text + music?
+
+Best option: Record narration (even with your laptop mic, but in a quiet room).
+
+In Canva → Upload → Record yourself while showing slides (or upload pre-recorded audio).
+
+4. Adding MATLAB Demo
+
+Record your MATLAB/Simulink simulation with OBS Studio or built-in screen recorder.
+
+Show:
+
+Buck mode waveform (charging).
+
+Boost mode waveform (regenerative braking).
+
+Keep each demo short (20–30 sec).
+
+Export these clips and upload them into Canva.
+
+Insert them after your “MATLAB/Simulink Demo” slide.
+
+5. Video Assembly
+
+In Canva:
+
+Put slides in correct order.
+
+Add short transitions (slide → fade) between sections.
+
+Place narration or text captions under each slide.
+
+Insert your MATLAB clips in the right place.
+
+6. Background & Style
+
+Add soft background music (Canva has free options).
+
+Keep volume low so your narration is clear.
+
+Use consistent color palette:
+
+Blue (technology) + Green (energy) + White (clean).
+
+Add animated arrows to show power flow directions in buck/boost slides.
+
+7. Exporting & Upload
+
+Export in 1080p (Full HD), MP4 format.
+
+Length: 6–10 minutes is ideal for technical YouTube videos.
+
+Add YouTube title & thumbnail in Canva (e.g., “⚡ Bidirectional DC-DC Converter Explained | EV & Renewable Energy Applications”).
+
+✅ End result: A professional lecture-style explainer video + live MATLAB demo, easy for both students and engineers to understand.

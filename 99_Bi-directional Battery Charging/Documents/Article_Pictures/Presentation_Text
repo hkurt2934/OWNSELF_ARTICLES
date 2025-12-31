@@ -1,0 +1,44 @@
+Slide 1:
+Merhabalar Değerli Hocalarım ve Katılımcılar
+Bu sunumda elektrikli araçlardaki rejeneratif frenleme sistemlerinde çift yönlü konvertör ile tek yönlü konvertörün enerji katkıları karşılaştırılmıştır.
+
+Slide 2:
+Günümüzde elektrikli araçların artık yaygın olarak kullanılırken araçların enerji verimliliği önemli bir kanu olmaktadır.
+Geleneksel rejeneratif frenleme sistemleri düşük geri elektromotor kuvvet sebebiyle düşük hızlarda enerji üretmede yetersiz kalmaktadır.
+Geleneksel rejeneratif sistemlerde tek yönlü konvertör kullanılmaktadır.
+Tek yönlü konverter sadece yükseltme modunda çalışmaktadır. Batarya voltajını motor voltajına yükseltmektedir. Bu da düşük hızlarda elektrik üretimini sınırlamaktadır.
+Bu problemi çözmek için hem araç hızlanırken yükselteç olarak çalışırken hemde araç yavaşlarken alçaltaç olarak çalışan çift yönlü konvertör kullanılılmıştır. Bu sayede enerji verimi düşük hızlarda arttığı tespit edilmiştir.
+
+Slide 3:
+Bu çalışma MATLAB Simulink ortamında sümulasyon gerçekleştirilmiştir. Test edilen model; batarya, çift taraflı konvertör, PMSM motor sürücü için SVPWM dönüştürücü ve field oriented kontroller dan oluşmaktadır. Ne kadar enerji üretildiğini tespi etmek için power hesaplayan bir blok eklenmiştir. Giriş olarak araca etki eden tork kuvveti ve aracın hızını belirten referanslar eklenmiştir. Motor olarak elektrikli araçlarda yaygın olarak kullanılan Sabit Mıknatıslı Senkron Motor kullanılmıştır. Karşılaştırma yapmak için çift yönlü konvertör blok ile tek yönlü konvertör bloğu kullanılmıştır. Diğer bloklar her iki test için aynı kalmıştır.
+
+Slide 4:
+Araç hareket halinde iken üzerine çeşitli kuvvetler uygulanmaktadır. Bunlardan bazıları rüzgar kuvveti, eğimli yolda araç ağırlığından kaynaklı yerçekimi kuvveti gibi. Bunları motora tork girişi olarak uygulandı. Aynı zamanda modeli test etmek için referans bir hız eğrisi de grafikte gösterildiği gibi eklenmiştir. Mavi eğri torku göstermektedir. Kırmızı eğri hızı göstermektedir. Mavi eğri ile de görüldüğü gibi araç hem yokuş yukarı hemde yokuş aşağı küçük eğimlerle ve düşük hızlarla hareket etmektedir. Araç hızı maksimum 1800 rpm seçilmiştir. Buda yaklaşık 20 Kilometre saat etmektedir.
+
+Slide 5:
+Sabit Mıknatıslı Senkron Motorun parametreleri tabloda gösterilmiştir. Motor vites oranı 10 olarak belirlenmiştir.
+
+Slide 6:
+Dual modda model motordaki torku takip etmektedir. Eğer tork sıfırdan büyükse bu demek oluyor ki araç hızlanmaktadır ve batarya motora enerji vermektedir. Eğer tork sıfırdan küçükse motor jeneratör olarak çalışacağından batarya şarj olacaktır. Aynı zamanda batarya voltajı 280 volt ve motor nominal voltajı 300 volttur ve tork sıfırdan büyükse konvertör boost yani yüskelteç modunda çalışacaktır. Eğer tork sıfırdan küçükse konvertör buck yani alçaltaç olarak çalışacaktır.
+Bu çalışmada önerilen modelin performansını karşılaştırmak için kullanılan kriterler Batarya şarj durumu, kazanılan enerji miktarı ve sistemin hız ve tork cevaplarıdır.
+
+Slide 7:
+Batarya başlangıç şarj durumu yüzde 80 olarak seçilmiştir. Batarya şarj durumları grafikte görüldüğü gibi çift yönlü konvertörde daha yüksektir.
+
+Slide 8:
+İki konvertörün hız değişimlerine tepkisi grafikte gösterildiği gibi neredeyse aynı. Çünkü güçlü kontrolcü olan PI koontrolcüsü ile çalışan Field Oriented kontroller kullanılmıştır.
+
+Slide 9:
+Grafikte gösterildiği gibi Tek taraflı konvertör de tork geçişleri salınmlı olmaktadır. Fakat Çüft taraflı konvertörde bu daha düzgün geçişlere sahiptir. Bu da araçtaki elektrik dalganlamalarını azaltacaktır ve motorunn ömrünü uzatacaktır. Bu durum önerilen modelin verimliliğini göstermektedir.
+
+Slide 10:
+Simulasyon süresi 2.5 saniye tutulmuştur. Grafikte görüldüğü gibi çift taraflı konvertör 0.2173 Watt saat enerji üretirken tek taraflı konvertör 0.1781 watt saat enerji üretmiştir.
+
+Slide 11:
+Oransal olarak çift taraflı konvertör tek taraflıya göre yüzde 22.01 daha fazla enerji üretmiştir. Bu sonuç çift taraflı konvertörün daha verimli olduğunu göstermiştir. Ayrıca çift taraflı konvertör kısa simulasyon süresi ve düşük hızda olmasına rağmen ortalama 312.91 watt enerji üretmiştir. Bu değer uzun yol koşullarında gayet verimli enerji üretmesi ve dolayısıyla daha uzun menzil demektir.
+
+Slide 12:
+Sonuç olarak bu çalışmada çift taraflı konvertör ile enerji akışı kontrol edilen sabit mıktnatıslı bir aracın enerji verimliliği gösterilmiştir. Yapılan test sonucunda çift taraflı konvertör geleneksel tek modlu konvertöre göre yüzde 22.01 daha verimli çalıştığı tespit edilmiştir. Tork geçişlerinde daha düzgün geçişler sağladığı görülmüştür.
+
+Slide 13:
+Sunumu izlediğiniz için teşekkür ederim.

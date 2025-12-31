@@ -1,0 +1,185 @@
+Canva Slide Design Plan – Bidirectional DC-DC Converter
+Slide 1 – Title
+
+Text:
+
+Bidirectional DC-DC Converter
+
+Principles and Applications
+
+[Your Name] – [University / Department]
+
+Visuals:
+
+Icon: ⚡ electricity / 🔋 battery / 🚗 EV
+
+Background: Clean gradient (blue → white)
+
+Slide 2 – Motivation
+
+Text (3 bullets max):
+
+Key in Electric Vehicles (charging & regenerative braking)
+
+Essential in Renewable Energy + Storage
+
+Used in Smart Grids & UPS
+
+Visuals:
+
+EV icon 🚗
+
+Solar panel 🌞
+
+Battery 🔋
+
+Grid/house 🏠
+
+Slide 3 – Basic Principle
+
+Text:
+
+Buck Mode (Step-Down): Source → Battery/Load
+
+Boost Mode (Step-Up): Battery → Source
+
+Enables Bidirectional Energy Flow
+
+Visuals:
+
+Arrows left ↔ right (two-way power flow)
+
+Battery in middle, source on left, motor/load on right
+
+Slide 4 – Circuit Topology
+
+Text:
+
+Components: Inductor, Switches, Diode, Capacitor
+
+Voltage Relations:
+
+Buck:
+𝑉
+𝑜
+𝑢
+𝑡
+=
+𝐷
+⋅
+𝑉
+𝑖
+𝑛
+V
+out
+	​
+
+=D⋅V
+in
+	​
+
+
+Boost:
+𝑉
+𝑜
+𝑢
+𝑡
+=
+𝑉
+𝑖
+𝑛
+1
+−
+𝐷
+V
+out
+	​
+
+=
+1−D
+V
+in
+	​
+
+	​
+
+
+Visuals:
+
+Simple circuit schematic (upload from internet or draw in Canva)
+
+Formula as image (LaTeX to PNG → upload to Canva)
+
+Slide 5 – Control Strategy
+
+Text:
+
+Controlled by PWM Duty Cycle
+
+Voltage Mode → Charging (Buck)
+
+Current Mode → Regenerative Braking (Boost)
+
+Visuals:
+
+PWM waveform icon
+
+Voltage meter & Current meter icons
+
+EV braking icon 🚗🛑
+
+Slide 6 – MATLAB/Simulink Demo
+
+Text:
+
+Buck Mode → Battery Charging ⚡🔋
+
+Boost Mode → Regenerative Braking 🚗⚡
+
+Observe Voltage, Current, and Power Flow
+
+Visuals:
+
+Insert your Simulink model screenshot
+
+Insert waveform screenshots (Voltage, Current)
+
+Animated arrow icons for energy flow
+
+Slide 7 – Applications
+
+Text:
+
+Electric Vehicles (Tesla, Nissan, BYD)
+
+Renewable Energy Storage (Solar + Battery)
+
+Smart Grids & Microgrids
+
+Visuals:
+
+Tesla EV image
+
+Solar panel + battery icon
+
+Smart grid house illustration
+
+Slide 8 – Conclusion
+
+Text:
+
+Works in two modes: Buck & Boost
+
+Enables efficient energy transfer
+
+Essential for EVs, Renewables, and Grids
+
+Visuals:
+
+Summary graphic: bidirectional arrow + battery + EV
+
+Simple clean background (end slide style)
+
+🎤 Narration Tip
+
+For each slide, just talk naturally for 20–40 seconds. Total video length will be 6–9 minutes (perfect for YouTube).

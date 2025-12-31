@@ -1,0 +1,62 @@
+Narration Script – Bidirectional DC-DC Converter Presentation
+Slide 1 – Title
+
+“Hello everyone, welcome to my presentation.
+Today, I will be talking about Bidirectional DC-DC Converters, their working principles, and applications.
+I will also show you a MATLAB/Simulink demonstration to better understand how they work in practice.”
+
+Slide 2 – Motivation
+
+“Bidirectional converters are a key technology in modern energy systems.
+In electric vehicles, they allow power transfer between the motor and the battery during charging and regenerative braking.
+In renewable energy systems, they manage energy flow between solar panels, storage, and loads.
+And in smart grids and UPS systems, they help maintain efficiency and reliability.”
+
+Slide 3 – Basic Principle
+
+“The bidirectional converter works in two different modes.
+In buck mode, it acts as a step-down converter, transferring energy from the source to the battery or load.
+In boost mode, it acts as a step-up converter, allowing energy to flow back, for example from the battery to the motor during regenerative braking.
+This ability to transfer energy in both directions makes the converter highly versatile.”
+
+Slide 4 – Circuit Topology
+
+“This is the basic circuit topology of a bidirectional DC-DC converter.
+It includes an inductor, switching devices, a diode, and a capacitor.
+The output voltage depends on the duty cycle of the switches.
+In buck mode, the output voltage is equal to the duty cycle multiplied by the input voltage.
+In boost mode, the output voltage is the input voltage divided by one minus the duty cycle.
+This switching control is what allows the converter to step voltages up or down.”
+
+Slide 5 – Control Strategy
+
+“Control of the bidirectional converter is achieved through Pulse Width Modulation, or PWM.
+In charging mode, which corresponds to buck operation, we use a voltage control loop to regulate the charging process.
+In regenerative braking, which corresponds to boost operation, we use a current control loop to safely send energy back to the battery.
+This ensures both efficiency and protection of the system.”
+
+Slide 6 – MATLAB/Simulink Demo
+
+“Now, let’s look at the MATLAB/Simulink demonstration.
+First, in buck mode, we can see how the converter charges the battery, with current flowing into it.
+Next, in boost mode, we observe the regenerative braking case, where energy flows back from the motor into the battery.
+By examining the waveforms of voltage, current, and power flow, we can clearly see the bidirectional nature of this converter.”
+
+(👉 Here, you insert your recorded MATLAB demo video clips.)
+
+Slide 7 – Applications
+
+“In real life, bidirectional converters are used in many applications.
+Electric vehicles, such as Tesla, Nissan, and BYD models, use them to achieve regenerative braking and efficient battery charging.
+In renewable energy systems, they manage the energy flow between solar panels, batteries, and loads.
+And in smart grids and microgrids, they enable flexible and efficient power distribution.”
+
+Slide 8 – Conclusion
+
+“To conclude, the bidirectional DC-DC converter operates in two main modes: buck and boost.
+It enables efficient energy transfer in both directions.
+This makes it an essential technology for electric vehicles, renewable energy systems, and future smart grids.
+Thank you for watching, and I hope this presentation gave you a clear understanding of how bidirectional converters work.”
+
+✅ This script is about 6–8 minutes long when spoken naturally. Perfect for YouTube.
+✅ You can add short pauses during slides and let animations or arrows appear in Canva while you speak.
