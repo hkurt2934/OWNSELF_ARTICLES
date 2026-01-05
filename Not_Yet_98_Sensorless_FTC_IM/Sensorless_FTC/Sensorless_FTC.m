@@ -35,13 +35,20 @@ idr = zeros(1,n); iqr = zeros(1,n);
 theta_r = zeros(1,n); omega_r = zeros(1,n);
 Te = zeros(1,n);
 
-iqs_ref = zeros(1,n); id_ref_vec = id_ref*ones(1,n);
+iqs_ref = zeros(1,n);
+id_ref_vec = id_ref*ones(1,n);
 
 fault_flag = false;
 
 %% MRAS Observer variables
 omega_hat = zeros(1,n);   % estimated speed
 K_adapt = 500;
+
+%% Initial conditions
+omega_r(1)      = 0;
+omega_hat(1)    = 0;
+ids(1) = 0; iqs(1) = 0;
+idr(1) = 0; iqr(1) = 0;
 
 %% Loop
 for k = 2:n
