@@ -1,0 +1,17 @@
+Pages=>
+1) https://dergipark.org.tr/tr/pub/jitsa
+2) https://www.hindawi.com/journals/?discipline=29&discipline=26&discipline=23
+3) https://sso.hindawi.com/auth/realms/Hindawi/protocol/openid-connect/auth?client_id=review&redirect_uri=https%3A%2F%2Freview.hindawi.com%2Fsubmit%2Fa36581ed-436e-47a1-879a-5e699a7c84ff%2F93ed3536-4e15-4b4c-89ea-b3fe537ef576&state=c7df3a27-d1cf-4cb5-8109-fca2d8dc38a1&response_mode=fragment&response_type=code&scope=openid&nonce=9eaf241d-1163-4ad3-83a8-c6f73bf3632d
+4) https://academicjournals.org/journal/JEEER/authors
+5) https://academicjournals.org/manuscript_handling_fee
+6) https://onlinelibrary.wiley.com/page/journal/19314981/homepage/forauthors.html
+7) https://onlinelibrary.wiley.com/action/showPublications?ConceptID=90&PubType=journal&startPage=6&pageSize=20
+8) https://www.editorialmanager.com/advintellsyst/default.aspx
+9) https://onlinelibrary.wiley.com/page/journal/26404567/homepage/2501_charges.html
+10) https://onlinelibrary.wiley.com/journal/15206416?tabActivePane=
+11) https://onlinelibrary.wiley.com/journal/20507038
+12) https://onlinelibrary.wiley.com/journal/20507038?tabActivePane=
+13) https://onlinelibrary.wiley.com/journal/20423195
+14) https://www.scitechnol.com/submitmanuscript-electrical-engineering-electronic-technology.php
+15) https://www.hilarispublisher.com/electrical-electronic-systems/submit-manuscript.html
+16) https://www.tutorialspoint.com/android/android_studio.htm
