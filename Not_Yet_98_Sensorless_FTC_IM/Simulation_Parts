@@ -1,0 +1,28 @@
+% --- Inside the for loop ---
+% 1. Plant Currents (from sources)
+i_s = (Lr*psi_s - Lm*psi_r)/Delta; [2]
+
+% 2. MRAS Observer (Now v_s exists from initialization or previous step)
+% Your line 33:
+dpsi_r_v = (Lr/Lm)*( (v_s - Rs*i_s) - sigma*Ls*( (v_s - Rs*i_s)/Ls ) );
+
+% 3. Controller (FOC)
+% ... calculate v_s_ref ...
+
+% 4. Fault Tolerant Logic (from sources)
+if fault
+    v_bc = vb_cmd - vc_cmd; % Example from source [1]
+    v_alpha = 0;
+    v_beta = (sqrt(3)/3) * v_bc; [1]
+else
+    % Standard stationary frame conversion [1]
+    v_alpha = real(v_s_ref);
+    v_beta = imag(v_s_ref);
+end
+
+% 5. Define v_s for the Stator Flux Dynamics
+v_s = v_alpha + 1j*v_beta; [1]
+
+% 6. Update Machine States (from sources)
+dpsi_s = v_s - Rs*i_s; [1]
+% ... update psi_s, psi_r, wm ... [3]

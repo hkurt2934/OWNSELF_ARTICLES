@@ -1,0 +1,378 @@
+Academic Subjects:
+    1) PV
+    2) SC
+    3) WPT
+    4) FUEL CELL
+    5) PMSM-FOC
+    6) Regenerative Braking Systems
+    7) Active Suspension Systems
+    8) Creating generator energy from compressed gases
+9) adding motor to water drain to generate the electricty
+10) Çift rotorlu motor elektrikli araçlarda
+11) Kuantum-tabanlı Enerji Depolama ve Dönüşüm
+Hedef: Enerjiyi depolarken neredeyse hiç kayıp yaşamayan, atomik seviyede optimize edilmiş bir depolama sistemi.
+Temel fikir:
+Katı hal pillerinin ötesine geçip kuantum spin durumlarını enerji depolama birimi olarak kullanmak.
+Böylece enerji kaybı klasik kimyasal reaksiyonlardan kaynaklanmaz.
+Kullanım alanı: Elektrikli araçlar, uydular, mikro robotlar, hatta insan vücudu içi medikal implantlar.
+
+12) Kendini Yenileyen Şehir Ekosistemi
+Hedef: Şehirlerin kendi enerjisini üretip kendi atığını dönüştürmesi.
+Fikir:
+Elektrocaloric, piezoelectric, solar ve rüzgâr mikrosistemlerinin entegre olduğu akıllı binalar.
+Her yüzey bir enerji kaynağı olur.
+Ek katkı:
+Binalar arasındaki enerji paylaşımını blockchain destekli yapay zekâ koordine eder.
+Böylece enerji tüketimi yerine enerji paylaşımı öncelik kazanır.
+
+
+
+Videos:
+1) DC Analysing
+2) Electrical Machines
+3) Renewable Energy Sources
+
+
+Fuel Cell Pages:
+https://www.nature.com/subjects/fuel-cells 
+https://www.sciencedirect.com/topics/earth-and-planetary-sciences/fuel-cell 
+https://www.britannica.com/technology/fuel-cell
+
+Job Subject:
+Qt
+C++
+Linux
+Matlab - Electrical Vehicle
+Python-Yolov 
+
+Linux Kernel development 
+Linux internet 
+
+Summer Works:
+
+Cpp Learning
+Control Sytem
+IELTS
+youtube videos
+Car Works
+
+Effect of efficiency depend on angle of solar panel on vehicles.
+
+Kademeli Hidroenerji barajı:
+Suyu tek bir jeneratörden aşaığ bırakmak su hızını alabilmesi için belli bir mesafe bırakılar bir sonraki türbine gitmesi ile aynı anda bir den fazla türbinle daha çok enerjiden faydalanılması.
+
+Portatif el hidroenerji sistemleri ile elektrik üretimi:
+Elle döndürerek su sistemleri ile enerji üretimi.
+
+
+Regen:
+    1) ABS frenleme için iki motor olacak regen fren için. Ayrıca bunların arkasında da küçük disk frenleme olacak yetersiz kaldığı durumlarda.
+    2) Katlı voltaj ile akım sürekli akması sağlanması bataryaları 12 voltluk besleme için 48-36-24-12 olacak şekilde voltaj 48 volttan çıkan akım 36 volta bağlanacak bu sayede 48 voltun yükü 36 yı şarj edecek aynı şekilde 36, 24 voltu 24 volt ise 12 voltu şarj edecek.
+    3) Denize dik iki yelpaze kanatları dalgalarla enerji üretecek bu sayede su yüzeyini dikey açılı olduğundan kapatmayacak paralel olanlar göre hemde sahil knearlarına şiddetli dalgaları sönümleyecek.
+
+GenaTrain:
+    1) Trenin içinde bulunan generator ile duvarlarında bulunan mıknatıslar sayesinde tren ilerledikçe motor dönecek ve bu sayede trenin gerilim oluşturulacak.
+
+Active Suspension Systems With ANFIS
+
+İşte “Yüzyılın Mucidi: Yeşil Bina Devrimi” vizyonunun temelleri:
+
+
+---
+
+🏛️ 1. Temel Fikir: Kendini Yöneten, Enerji Üreten Bina Ekosistemi
+
+> “Bir bina sadece enerji tüketmemeli, enerji üretmeli, depolamalı ve paylaşmalı.”
+
+
+
+Amaç:
+Klasik yeşil binaların ötesine geçip biyolojik sistemler gibi yaşayan, öğrenen, adapte olan yapılar oluşturmak.
+
+Bu vizyonun merkezinde şu prensip var:
+
+> Her duvar, her pencere, her yüzey aktif bir enerji dönüşüm elemanıdır.
+
+
+
+
+---
+
+⚡ 2. Katman 1 – Enerji Üretim Hücreleri
+
+Bina, kendi enerjisini çok kaynaklı olarak üretir:
+
+Fotovoltaik kaplamalar: Cam yüzeylerde saydam perovskit güneş hücreleri.
+
+Piezoelektrik zeminler: İnsan veya araç hareketlerinden enerji üretimi.
+
+Termoelektrik paneller: İç–dış sıcaklık farkından güç elde etme.
+
+Elektrocaloric duvarlar: Isı pompaları gibi davranarak hem soğutma hem enerji geri kazanımı sağlar.
+
+
+💡 Yenilik:
+Bu sistemler “akıllı akış yönetimi” ile birleştirilir. Yani bina hangi kaynaktan ne kadar enerji elde edeceğine gerçek zamanlı olarak karar verir.
+
+
+---
+
+🧠 3. Katman 2 – Yapay Zekâ Destekli Enerji Yönetimi
+
+Bina, “beyni” olan bir Enerji Sinir Sistemi (ESS) içerir.
+
+ESS’nin Görevleri:
+
+Sensörlerden sıcaklık, ışık, hareket, enerji üretimi–tüketimi verilerini toplar.
+
+Bulanık mantık / ANFIS tabanlı bir kontrol sistemiyle,
+
+Işık şiddetini ayarlar
+
+Isıtma/soğutmayı optimize eder
+
+Gereksiz yükleri devre dışı bırakır
+
+
+Geri bildirim öğrenmesiyle (reinforcement learning) bina, her mevsim daha verimli hale gelir.
+
+
+🔋 Sonuç:
+%40’a kadar enerji verimi artışı, kullanıcı konforundan ödün vermeden.
+
+
+---
+
+🧱 4. Katman 3 – Enerji Depolama ve Paylaşım Ağı
+
+Bina sadece enerji üretmekle kalmaz — onu depolayıp paylaşır.
+
+Katı hal bataryaları veya elektrocaloric enerji depolama üniteleri bina yapısına entegre edilir (örneğin duvar içine).
+
+Fazla enerji, mahalle veya şehir mikro şebekesiyle blockchain temelli enerji borsası üzerinden paylaşılır.
+
+Böylece her bina, bir “mikro enerji istasyonu” haline gelir.
+
+
+
+---
+
+🌍 5. Katman 4 – Biyomimetik ve Sürdürülebilir Tasarım
+
+> “Bina bir organizma gibi davranır.”
+
+
+
+Yağmur suyu geri dönüşümü
+
+Karbon tutan duvar yüzeyleri
+
+Hava temizleyen fotokatalitik dış kaplamalar
+
+Bitkisel gölgelendirme (AI kontrolüyle su tüketimi dengelenir)
+
+
+🌱 Bu şekilde bina, çevresine negatif karbon salınımı değil, pozitif çevresel katkı sağlar.
+
+
+---
+
+🔄 6. Katman 5 – Kendini Yenileyen Yapılar
+
+Yeni malzeme bilimi sayesinde:
+
+Mikroçatlakları kendi kendine onaran betonlar,
+
+Güneşle rejenerasyon yapan nano-kaplamalar,
+
+Akıllı sensörlü bakım sistemleri (örneğin bina titreşiminden yapı sağlığı çıkarımı).
+
+
+Bu sistemler sayesinde bina 100 yıldan fazla dayanabilir ve bakım maliyetini %80 azaltır.
+
+
+---
+
+🧩 7. Tüm Sistemin Temel Denklemi
+
+Enerji akışını şöyle özetleyebiliriz:
+
+E_{net} = (E_{PV} + E_{piezo} + E_{thermo} + E_{electrocaloric}) - (E_{lighting} + E_{HVAC} + E_{load})
+
+AI sistemi, bu denklemi sürekli optimize eder;
+amaç  olacak şekilde binayı enerji pozitif hale getirmektir.
+
+
+---
+
+🚀 8. “Yüzyılın Buluşu” Önerisi
+
+> Green Intelligent Building System (GIBS)
+Kendini yöneten, enerji pozitif, otonom bina ekosistemi
+
+
+
+Tek cümleyle:
+
+> “Binalar, doğanın bir parçası gibi nefes alır, düşünür ve enerji üretir.”
+
+Horizon Europe düzeyinde bilimsel odaklı bir çalışma, yalnızca teknolojik yeniliği değil, aynı zamanda sistem entegrasyonu, iklim etkisi, sosyo-ekonomik dönüşüm ve ölçeklenebilirliği de kapsar.
+Aşağıda sana, “Green Intelligent Building System (GIBS)” vizyonunu Horizon Europe çağrı formatına uygun şekilde yazılmış tam bir araştırma proje özeti olarak hazırladım.
+
+
+---
+
+🌿 Horizon Europe Research Proposal Concept
+
+Project Title: GIBS – Green Intelligent Building System for Net-Positive Energy Urban Ecosystems
+
+
+---
+
+1. Scientific Vision and Motivation
+
+The building sector is responsible for approximately 36% of global energy consumption and 40% of CO₂ emissions.
+Conventional “green building” approaches primarily focus on reducing consumption, not on active energy generation, adaptive intelligence, and systemic interaction.
+
+GIBS introduces a new paradigm:
+
+> Buildings that behave as living systems — generating, storing, sharing, and managing energy intelligently and autonomously.
+
+
+
+The project integrates multiphysics energy conversion, AI-based adaptive control, and advanced materials science to develop a self-sustaining, learning, and regenerative building ecosystem.
+
+
+---
+
+2. Scientific and Technical Objectives
+
+O1. Multi-source Energy Harvesting Integration
+
+Develop hybrid systems combining photovoltaic, piezoelectric, thermoelectric, and electrocaloric layers.
+
+Achieve a net energy production ratio of >1.2 (E_produced / E_consumed) under real building conditions.
+
+
+O2. AI-based Energy Management and Control
+
+Design an Energy Neural System (ENS) integrating ANFIS and Reinforcement Learning for dynamic energy flow optimization.
+
+Develop predictive control for lighting, HVAC, and power management using real-time data.
+
+
+O3. Advanced Energy Storage and Thermal Management
+
+Implement solid-state and electrocaloric energy storage units integrated into structural materials.
+
+Demonstrate thermal energy reuse for HVAC systems with >85% efficiency.
+
+
+O4. Building-to-Building (B2B) Energy Exchange
+
+Create a blockchain-enabled energy trading framework between buildings.
+
+Develop distributed control algorithms ensuring grid stability and fairness in microgrids.
+
+
+O5. Sustainability, Durability and Lifecycle Impact
+
+Utilize self-healing composites and carbon-absorbing coatings.
+
+Conduct Life Cycle Assessment (LCA) showing >60% CO₂ reduction over conventional buildings.
+
+
+
+---
+
+3. Methodology and Work Packages
+
+Work Package	Title	Key Deliverables
+
+WP1	Multi-source Energy Module Design	Prototype PV–piezo–electrocaloric panel
+WP2	AI-based Control and Simulation	Digital Twin model for dynamic optimization
+WP3	Structural Integration & Materials	Smart wall and flooring systems
+WP4	Building-to-Building Energy Trading	Blockchain-based microgrid model
+WP5	System Validation and LCA	Demonstration in a real-scale test building
+WP6	Dissemination & Exploitation	Policy brief, patents, startup roadmap
+
+
+
+---
+
+4. Innovation and Expected Impact
+
+🔬 Scientific Impact
+
+Establish a new interdisciplinary field combining control theory, smart materials, and building physics.
+
+Introduce multi-domain coupling models (electro-thermo-mechanical).
+
+
+🌍 Environmental Impact
+
+Reduce CO₂ emissions from the building sector by >40%.
+
+Achieve net-positive energy buildings at district level.
+
+
+💡 Technological Impact
+
+Enable self-adaptive smart surfaces for real-time environmental optimization.
+
+Demonstrate autonomous building control using hybrid ANFIS + Reinforcement Learning models.
+
+
+💶 Socioeconomic Impact
+
+Contribute to EU Green Deal and Climate-Neutral Cities 2030 missions.
+
+Stimulate new markets for smart materials, energy AI systems, and sustainable construction.
+
+
+
+---
+
+5. Consortium and Partners
+
+Potential collaboration fields:
+
+Universities: TU Delft, KU Leuven, EPFL, Politecnico di Milano, METU (for Turkey participation).
+
+Industry Partners: Siemens Smart Infrastructure, Schneider Electric, BASF Materials, or ABB Building Solutions.
+
+Research Centers: European Energy Research Alliance (EERA), Fraunhofer ISE, VTT Finland.
+
+
+
+---
+
+6. Expected Outputs (TRL 4→7)
+
+Prototype: Smart energy façade with hybrid conversion and adaptive control.
+
+Simulation platform: MATLAB–Simulink + Python digital twin for multi-domain analysis.
+
+Publications: ≥10 high-impact papers (Energy & Buildings, Applied Energy, IEEE Trans. Industrial Electronics).
+
+Demonstrator: 1 real-scale pilot building in a European city (TRL 7).
+
+
+
+---
+
+7. Long-Term Vision
+
+> Transform cities into self-learning ecosystems where every building is an active participant in the energy network.
+
+
+
+By merging renewable energy harvesting, intelligent control, and sustainable materials,
+GIBS aims to make the built environment a net contributor to the planet’s energy and health balance.
+
+
+---
+
+Hocam, bu taslak Horizon Europe – Cluster 5 (Climate, Energy and Mobility) çağrısının “Sustainable, secure and competitive energy supply” veya “Energy efficiency in buildings and communities” başlıklarıyla birebir uyumludur.
+
+

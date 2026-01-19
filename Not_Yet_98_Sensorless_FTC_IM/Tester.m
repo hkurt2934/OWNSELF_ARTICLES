@@ -1,0 +1,110 @@
+clc; clear; close all;
+
+%% Motor Parameters
+Rs = 1.405;      % Stator resistance (ohm)
+Rr = 1.395;      % Rotor resistance (ohm)
+Ls = 0.0058;     % Stator inductance (H)
+Lr = 0.0058;     % Rotor inductance (H)
+Lm = 0.0055;     % Magnetizing inductance (H)
+P  = 2;          % Pole pairs
+J  = 0.02;       % Inertia (kg.m^2)
+B  = 0.001;      % Friction coefficient
+
+Tr = Lr / Rr;    % Rotor time constant
+
+%% Simulation Parameters
+Ts = 1e-4;       % Sampling time
+Tsim = 3;        % Simulation time
+t = 0:Ts:Tsim;
+
+%% References
+psi_r_ref = 0.8;     % Rotor flux reference (Wb)
+omega_ref = 1500*2*pi/60;     % Speed reference (rad/s)
+Tl = 10;              % Load torque (Nm)
+
+%% Controller Gains
+Kp_id = 50; Ki_id = 500;
+Kp_iq = 50; Ki_iq = 500;
+Kp_w  = 1;  Ki_w  = 20;
+
+%% Initialization
+id = 0; iq = 0;
+psi_r = 0;
+omega = 0;
+theta = 0;
+
+int_id = 0; int_iq = 0; int_w = 0; % integrals of variables.
+
+id_log = zeros(size(t));
+iq_log = zeros(size(t));
+omega_log = zeros(size(t));
+
+%% Main Control Loop
+for k = 1:length(t)
+
+    %% Speed Controller (Outer Loop)
+    e_w = omega_ref - omega;
+    int_w = int_w + e_w*Ts;
+    iq_ref = Kp_w*e_w + Ki_w*int_w;
+
+    %% Flux Reference
+    id_ref = psi_r_ref / Lm;
+
+    %% Current Controllers
+    e_id = id_ref - id;
+    e_iq = iq_ref - iq;
+
+    int_id = int_id + e_id*Ts;
+    int_iq = int_iq + e_iq*Ts;
+
+    vd = Kp_id*e_id + Ki_id*int_id;
+    vq = Kp_iq*e_iq + Ki_iq*int_iq;
+
+    %% Slip Frequency
+    omega_sl = (Rr / Lr) * (iq / max(id,0.01));
+
+    %% Electrical Speed
+    omega_e = P*omega + omega_sl;
+    theta = theta + omega_e*Ts;
+
+    %% Motor Model (Very Simplified)
+    did = (-Rs/Ls)*id + (vd/Ls);
+    diq = (-Rs/Ls)*iq + (vq/Ls);
+
+    id = id + did*Ts;
+    iq = iq + diq*Ts;
+
+    %% Electromagnetic Torque
+    Te = (3/2)*P*(Lm/Lr)*psi_r*iq;
+
+    %% Mechanical Equation
+    domega = (Te - Tl - B*omega)/J;
+    omega = omega + domega*Ts;
+
+    %% Rotor Flux Dynamics
+    dpsi = (Lm*id - psi_r)/Tr;
+    psi_r = psi_r + dpsi*Ts;
+
+    %% Logging
+    id_log(k) = id;
+    iq_log(k) = iq;
+    omega_log(k) = omega;
+end
+
+%% Plots
+figure;
+subplot(3,1,1)
+plot(t,omega_log,'LineWidth',1.5)
+ylabel('Speed (rad/s)')
+grid on
+
+subplot(3,1,2)
+plot(t,id_log,'LineWidth',1.5)
+ylabel('i_d (A)')
+grid on
+
+subplot(3,1,3)
+plot(t,iq_log,'LineWidth',1.5)
+ylabel('i_q (A)')
+xlabel('Time (s)')
+grid on

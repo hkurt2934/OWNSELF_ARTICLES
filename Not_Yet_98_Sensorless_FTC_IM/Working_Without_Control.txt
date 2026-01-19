@@ -1,0 +1,297 @@
+%% Test_X4.m
+% Compare Healthy vs Whole-Leg Open-Circuit (phase-A leg open) using the SAME
+% plant/fault logic as Test_X1_wholeleg_v3.m (flux constraint + two-leg excitation).
+%
+% User case:
+%   speed reference = 1500 rpm
+%   load torque     = 50 N.m
+%   fault time      = 1 s
+%
+% Expected whole-leg signatures AFTER tfault:
+%   ia -> ~0
+%   ib ~ -ic
+%   torque ripple increases
+
+clear; clc; close all;
+
+%% ================== Machine Parameters ==================
+Rs = 0.435;
+Rr = 0.816;
+Lls = 0.002;
+Llr = 0.002;
+Lm  = 0.0693;
+Ls  = Lls + Lm;
+Lr  = Llr + Lm;
+P   = 4;
+J   = 0.089;
+B   = 0.001;
+Delta = Ls*Lr - Lm^2;
+
+%% ================== Simulation Settings ==================
+Ts = 1e-4;
+Tend = 3.0;
+time = 0:Ts:Tend;
+N = numel(time);
+
+tfault = 1.0;
+
+TL = 50; % N.m
+w_ref = 1500 * 2*pi/60;   % rad/s
+ws_ref = (P/2) * w_ref;   % electrical rad/s
+
+%% ================== Inverter + Scalar Control ==================
+Vdc = 600;
+Vpk_max = Vdc/sqrt(3);     % SVPWM fundamental phase peak limit
+
+% V/f base
+f_base   = 50;
+ws_base  = 2*pi*f_base;
+Vpk_base = 325;            % ~230 Vrms phase => 325 Vpk
+Kvf      = Vpk_base/ws_base;
+
+% Speed PI -> slip compensation
+Kpw = 0.6;
+Kiw = 30.0;
+ws_min = 0;
+ws_max = 2*pi*80;
+
+%% Run both cases
+res_h = sim_case(false);
+res_f = sim_case(true);
+
+win = time > 2.0;
+Te_mean = mean(res_h.Te(win));
+Te_pp   = max(res_h.Te(win)) - min(res_h.Te(win));      % peak-to-peak ripple
+w_mean  = mean(res_h.wm_rpm(win));
+w_ripple= max(res_h.wm_rpm(win)) - min(res_h.wm_rpm(win));
+
+fprintf("Te_mean=%.2f N.m, Te_pp=%.2f N.m\n", Te_mean, Te_pp);
+fprintf("w_mean=%.2f rpm, w_ripple_pp=%.2f rpm\n", w_mean, w_ripple);
+fprintf("Ia_rms/Ib_rms=%.4f\n", rms(res_h.ia(win))/max(rms(res_h.ic(win)),1e-12));
+fprintf("(Ib_rms + Ic_rms)/Ib_rms=%.4f\n", rms(res_h.ib(win) + res_h.ic(win))/rms(res_h.ib(win)));
+
+win = time > 2.0;
+Te_mean = mean(res_f.Te(win));
+Te_pp   = max(res_f.Te(win)) - min(res_f.Te(win));      % peak-to-peak ripple
+w_mean  = mean(res_f.wm_rpm(win));
+w_ripple= max(res_f.wm_rpm(win)) - min(res_f.wm_rpm(win));
+
+fprintf("Te_mean=%.2f N.m, Te_pp=%.2f N.m\n", Te_mean, Te_pp);
+fprintf("w_mean=%.2f rpm, w_ripple_pp=%.2f rpm\n", w_mean, w_ripple);
+fprintf("Ia_rms/Ib_rms=%.4f\n", rms(res_f.ia(win))/max(rms(res_f.ic(win)),1e-12));
+fprintf("(Ib_rms + Ic_rms)/Ib_rms=%.4f\n", rms(res_f.ib(win) + res_f.ic(win))/rms(res_f.ib(win)));
+%% ================== Plots (overlay) ==================
+% Speed
+figure('Name','Speed');
+plot(time, res_h.wm_rpm,'LineWidth',1.2); hold on;
+plot(time, res_f.wm_rpm,'LineWidth',1.2);
+xline(tfault,'r--','Fault'); grid on;
+title('Rotor Speed (Healthy vs Whole-leg open-circuit)');
+xlabel('Time [s]'); ylabel('Speed [rpm]');
+legend('Healthy','Whole-leg OCF','Location','best');
+
+figure('Name','Speed_All');
+subplot(2,1,1);
+plot(time, res_h.wm_rpm,'LineWidth',0.9); hold on;
+xline(tfault,'r--','Fault'); grid on; ylabel('i_a [A]');
+legend('Healthy','Location','best');
+title('Rotor Speed (Healthy)');
+xlabel('Time [s]'); ylabel('Speed [rpm]');
+
+subplot(2,1,2);
+plot(time, res_f.wm_rpm,'LineWidth',0.9); hold on;
+xline(tfault,'r--','Fault'); grid on; ylabel('i_b [A]');
+legend('Whole-leg OCF','Location','best');
+title('Rotor Speed (Whole-leg open-circuit)');
+xlabel('Time [s]'); ylabel('Speed [rpm]');
+
+% Torque
+figure('Name','Torque');
+plot(time, res_h.Te,'LineWidth',1.0); hold on;
+plot(time, res_f.Te,'LineWidth',1.0);
+yline(TL,'k--','Load'); xline(tfault,'r--','Fault'); grid on;
+title('Electromagnetic Torque (Healthy vs Whole-leg open-circuit)');
+xlabel('Time [s]'); ylabel('Torque [N.m]');
+legend('Healthy','Whole-leg OCF','Location','best');
+
+figure('Name','Torque_All');
+subplot(2,1,1);
+plot(time, res_h.Te,'LineWidth',0.9); hold on;
+xline(tfault,'r--','Fault'); grid on; ylabel('i_a [A]');
+legend('Healthy','Location','best');
+title('Electromagnetic Torque (Healthy)');
+xlabel('Time [s]'); ylabel('Speed [rpm]');
+
+subplot(2,1,2);
+plot(time, res_f.Te,'LineWidth',0.9); hold on;
+xline(tfault,'r--','Fault'); grid on; ylabel('i_b [A]');
+legend('Whole-leg OCF','Location','best');
+title('Electromagnetic Torque (Whole-leg open-circuit)');
+xlabel('Time [s]'); ylabel('Speed [rpm]');
+
+% Currents
+figure('Name','Phase currents');
+subplot(3,1,1);
+plot(time, res_h.ia,'LineWidth',0.9); hold on; plot(time, res_f.ia,'LineWidth',0.9);
+xline(tfault,'r--','Fault'); grid on; ylabel('i_a [A]');
+legend('Healthy','Fault','Location','best');
+title('Stator Phase Currents');
+
+subplot(3,1,2);
+plot(time, res_h.ib,'LineWidth',0.9); hold on; plot(time, res_f.ib,'LineWidth',0.9);
+xline(tfault,'r--','Fault'); grid on; ylabel('i_b [A]');
+legend('Healthy','Fault','Location','best');
+title('Stator Phase Currents');
+
+subplot(3,1,3);
+plot(time, res_h.ic,'LineWidth',0.9); hold on; plot(time, res_f.ic,'LineWidth',0.9);
+xline(tfault,'r--','Fault'); grid on; ylabel('i_c [A]'); xlabel('Time [s]');
+legend('Healthy','Fault','Location','best');
+title('Stator Phase Currents');
+
+%% ================== Numeric checks (steady window) ==================
+win = time > (Tend-0.5);
+
+ia_rms_h = rms(res_h.ia(win)); ib_rms_h = rms(res_h.ib(win)); ic_rms_h = rms(res_h.ic(win));
+ia_rms_f = rms(res_f.ia(win)); ib_rms_f = rms(res_f.ib(win)); ic_rms_f = rms(res_f.ic(win));
+
+fprintf('\n=== RMS currents (last 0.5 s) ===\n');
+fprintf('Healthy: ia=%.2f A, ib=%.2f A, ic=%.2f A\n', ia_rms_h, ib_rms_h, ic_rms_h);
+fprintf('Fault  : ia=%.2f A, ib=%.2f A, ic=%.2f A\n', ia_rms_f, ib_rms_f, ic_rms_f);
+fprintf('Fault ratio |ia|/|ib| = %.4f (should be near 0)\n', ia_rms_f/max(ib_rms_f,1e-12));
+fprintf('Fault check RMS(ib+ic) = %.2f A (should be small)\n', rms((res_f.ib(win)+res_f.ic(win))));
+
+wref = w_ref;  % rad/s
+fprintf('Expected Te_avg ~ TL + B*wref = %.3f N.m\n', TL + B*wref);
+
+%% ================== Local function ==================
+function out = sim_case(enable_fault)
+    % Pull variables from parent workspace
+    Rs = evalin('base','Rs');
+    Rr = evalin('base','Rr');
+    Lm = evalin('base','Lm');
+    Ls = evalin('base','Ls');
+    Lr = evalin('base','Lr');
+    Delta = evalin('base','Delta');
+    P = evalin('base','P');
+    J = evalin('base','J');
+    B = evalin('base','B');
+
+    Ts = evalin('base','Ts');
+    time = evalin('base','time');
+    N = evalin('base','N');
+    tfault = evalin('base','tfault');
+
+    TL = evalin('base','TL');
+    w_ref = evalin('base','w_ref');
+    ws_ref = evalin('base','ws_ref');
+
+    Vdc = evalin('base','Vdc');
+    Vpk_max = evalin('base','Vpk_max');
+    Kvf = evalin('base','Kvf');
+
+    Kpw = evalin('base','Kpw');
+    Kiw = evalin('base','Kiw');
+    ws_min = evalin('base','ws_min');
+    ws_max = evalin('base','ws_max');
+
+    % states
+    psi_s = 0 + 1j*0;
+    psi_r = 0 + 1j*0;
+    wm = 0;
+    theta = 0;
+    int_w = 0;
+
+    ia = zeros(1,N); ib = zeros(1,N); ic = zeros(1,N);
+    wm_rpm = zeros(1,N);
+    Te_log = zeros(1,N);
+
+    for k = 1:N
+        t = time(k);
+        omega_r = (P/2)*wm;
+
+        fault = enable_fault && (t >= tfault);
+
+        % enforce constraint at beginning of step
+        if fault
+            psi_s = (Lm/Lr)*real(psi_r) + 1j*imag(psi_s);
+        end
+
+        % currents
+        i_s = (Lr*psi_s - Lm*psi_r)/Delta;
+        i_alpha = real(i_s);
+        i_beta  = imag(i_s);
+
+        % phase currents for plotting
+        if fault
+            ia(k) = 0;
+            ib(k) =  (sqrt(3)/2)*i_beta;
+            ic(k) = -(sqrt(3)/2)*i_beta;
+        else
+            ia(k) = i_alpha;
+            ib(k) = -0.5*i_alpha + (sqrt(3)/2)*i_beta;
+            ic(k) = -0.5*i_alpha - (sqrt(3)/2)*i_beta;
+        end
+
+        % speed PI -> slip compensation
+        e_w = w_ref - wm;
+        int_w = int_w + e_w*Ts;
+        wslip = Kpw*e_w + Kiw*int_w;
+        ws_unsat = ws_ref + wslip;
+        ws_cmd = min(max(ws_unsat, ws_min), ws_max);
+        if ws_cmd ~= ws_unsat
+            int_w = int_w + (ws_cmd - ws_unsat)/max(Kiw,1e-9);
+        end
+        theta = theta + ws_cmd*Ts;
+
+        % V/f
+        Vpk = Kvf * ws_cmd;
+        Vpk = min(max(Vpk, 0), Vpk_max);
+
+        % command phase voltages
+        va_cmd = Vpk*sin(theta);
+        vb_cmd = Vpk*sin(theta - 2*pi/3);
+        vc_cmd = Vpk*sin(theta + 2*pi/3);
+
+        % stator voltage in alpha-beta
+        if ~fault
+            vn = (va_cmd + vb_cmd + vc_cmd)/3;
+            va = va_cmd - vn;
+            vb = vb_cmd - vn;
+            vc = vc_cmd - vn;
+            v_alpha = (2/3)*(va - 0.5*vb - 0.5*vc);
+            v_beta  = (2/3)*((sqrt(3)/2)*(vb - vc));
+        else
+            v_bc = vb_cmd - vc_cmd;
+            v_alpha = 0;
+            v_beta  = (sqrt(3)/3) * v_bc;
+        end
+        v_s = v_alpha + 1j*v_beta;
+
+        % flux dynamics
+        dpsi_s = v_s - Rs*i_s;
+        i_r = (-Lm*psi_s + Ls*psi_r)/Delta;
+        dpsi_r = -Rr*i_r + 1j*omega_r*psi_r;
+
+        psi_s = psi_s + dpsi_s*Ts;
+        psi_r = psi_r + dpsi_r*Ts;
+
+        % re-apply constraint after integration
+        if fault
+            psi_s = (Lm/Lr)*real(psi_r) + 1j*imag(psi_s);
+            i_s = (Lr*psi_s - Lm*psi_r)/Delta;
+        end
+
+        % torque + mech
+        Te = 1.5*(P/2) * imag(conj(psi_s) * i_s);
+        wm = wm + (Te - TL - B*wm)/J * Ts;
+
+        wm_rpm(k) = wm*60/(2*pi);
+        Te_log(k) = Te;
+        
+    end
+    
+    out.wm_rpm = wm_rpm;
+    out.Te = Te_log;
+    out.ia = ia; out.ib = ib; out.ic = ic;
+end
