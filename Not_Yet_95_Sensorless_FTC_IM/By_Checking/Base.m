@@ -1,4 +1,8 @@
 clc; clear; close all;
+% Devam edilmesi gereken: Chat GPT Hkurt2934 deki Important önerisini buraya
+% uygulanması.
+
+
 % Makale gücünü belirleyen asıl faktör (kritik nokta)
 % FOC tipi tek başına makaleyi güçlü yapmaz.
 % Aşağıdaki soruların “evet” cevabı varsa makale güçlüdür:
@@ -18,9 +22,57 @@ clc; clear; close all;
 % Güçlü, uzun ömürlü ve Q1 hedefli bir makale için:
 % Direct FOC tabanlı, observer destekli ve arıza toleranslı bir yapı seçmelisin.
 
-%
+% Neden Direkt SVPWM yok:
 % SVPWM is employed for inverter control.
 % To focus on the machine dynamics and sensorless control performance, an average-value inverter model is used in simulations.”
+% Bu ifade:
+% Literatürde standarttır
+% IEEE makalelerinde yüzlerce örneği vardır
+% Hakem için tamamen yeterlidir
+
+% Ortalama inverter kullanmak neyi BOZMAZ?
+% Bozmaz:
+% Rotor akı yönelimi
+% Id–Iq ayrışması
+% MRAS hız kestirimi
+% Speed loop stabilitesi
+% Load torque response
+% Low-speed instability analizi
+
+% Bozmaz:
+% “Sensorless” iddiasını
+% “Direct FOC” tanımını
+% Akı gözleyici geçerliliğini
+
+% Electrical machines hakemi neye bakar?
+% Hakem şunları görmek ister:
+% ✔ 1. Akı düzgün mü yönlenmiş?
+% ψrq≈0
+% ψrd sabit mi?
+% ✔ 2. Id–Iq ayrışması var mı?
+% Yük değişiminde Id sabit mi?
+% Iq torka mı gidiyor?
+% ✔ 3. MRAS stabil mi?
+% Düşük hızda sapma var mı?
+% Yük adımında overshoot makul mü?
+% ✔ 4. Speed loop düzgün mü?
+% Overshoot kabul edilebilir mi?
+% Settling time mantıklı mı?
+% Bunların hiçbiri anahtarlamalı SVPWM gerektirmez.
+
+% Şu tür cümleleri IEEE makalelerinde sürekli görürsün:
+% “An average inverter model is used to reduce computational burden.”
+% “Switching dynamics are neglected to emphasize control performance.”
+% “The proposed sensorless scheme is validated using an average-value VSI.”
+% Bu ifadeler red sebebi değildir.
+
+% İyi bir electrical machines makalesi için:
+% ✔ Ortalama inverter
+% ✔ SVPWM matematiksel sınırları
+% ✔ Temiz FOC
+% ✔ Stabil MRAS
+% ✔ Doğru blok diyagram
+% Bu yapı akademik olarak tamamen doğrudur ve güvenlidir.
 
 %% ===============================
 % 1. Motor Parameters

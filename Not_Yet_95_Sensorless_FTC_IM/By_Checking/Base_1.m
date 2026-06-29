@@ -1,4 +1,8 @@
 clc; clear; close all;
+% Devam edilmesi gereken: Chat GPT Hkurt2934 deki Important önerisini buraya
+% uygulanması.
+
+
 % Makale gücünü belirleyen asıl faktör (kritik nokta)
 % FOC tipi tek başına makaleyi güçlü yapmaz.
 % Aşağıdaki soruların “evet” cevabı varsa makale güçlüdür:
@@ -78,7 +82,7 @@ Rr = 1.395;      % Rotor resistance (ohm)
 Ls = 0.0058;     % Stator inductance (H)
 Lr = 0.0058;     % Rotor inductance (H)
 Lm = 0.0055;     % Magnetizing inductance (H)
-P  = 2;          % Pole pairs
+pp  = 2;          % Pole pairs
 J  = 0.02;       % Inertia (kg.m^2)
 B  = 0.001;      % Friction coefficient
 
@@ -140,6 +144,9 @@ psi_r_ref = 0.8;    % Flux Reference to calculate id reference
 w_ref = 100;        % rad/s
 ids_ref = psi_r_ref/Lm;
 
+psi_r = 0;
+psi_r_log = zeros(N,1);
+
 %% ===============================
 % 6. Main Loop
 %% ===============================
@@ -188,16 +195,30 @@ for k = 1:N
     %% ==================================
     %  Induction Motor dq Model
     %% ==================================
-    Te = (3/2)*P*(Lm/Lr)*(psi_rd*iqs - psi_rq*ids); % ??? Neden iqs ve ids direkt alındı burada. öncesinde hesaplama yok.
+    dpsi_r = (Lm/Tr)*ids - (1/Tr)*psi_r;
+    psi_r  = psi_r + Ts*dpsi_r;
+    
+    psi_r_eps = 1e-4;
+    psi_r_eff = max(abs(psi_r), psi_r_eps) * sign(psi_r + psi_r_eps);
+    
+    wsl = (Lm/Tr) * (iqs / psi_r_eff);     % electrical rad/s
 
+    we = wr + wsl;                         % if wr is rotor electrical speed
+    % If wr is mechanical speed (rad/s), use: we = p*wr + wsl;
+
+    % --- Electromagnetic torque (your requested formula) ---
+    Te = (3/2)*pp*(Lm/Lr)*psi_r*iqs;
+    
     dwr = (Te - TL - B*wr)/J;
     wr  = wr + dwr*Ts;
 
-    dpsi_rd = (Lm/Tr)*ids - psi_rd/Tr + wr*psi_rq;
-    dpsi_rq = (Lm/Tr)*iqs - psi_rq/Tr - wr*psi_rd;
 
-    psi_rd = psi_rd + Ts*dpsi_rd;
-    psi_rq = psi_rq + Ts*dpsi_rq;
+
+    % dpsi_rd = (Lm/Tr)*ids - psi_rd/Tr + wr*psi_rq;
+    % dpsi_rq = (Lm/Tr)*iqs - psi_rq/Tr - wr*psi_rd;
+    % 
+    % psi_rd = psi_rd + Ts*dpsi_rd;
+    % psi_rq = psi_rq + Ts*dpsi_rq;
 
     dids = (vds - Rs*ids + wr*Ls*iqs)/Ls;
     diqs = (vqs - Rs*iqs - wr*Ls*ids)/Ls;
@@ -218,7 +239,7 @@ for k = 1:N
     %  MRAS Speed Estimator
     %% ==================================
     % Clarke voltages
-    v_alpha_m = va;         % Burdaki değer motora girmeden önceki değer bir problem olur mu.
+    v_alpha_m = va;
     v_beta_m  = (va + 2*vb)/sqrt(3);
 
     % Clarke currents
@@ -254,6 +275,7 @@ for k = 1:N
     wr_hat_log(k) = w_e;
     ids_log(k)=ids;
     iqs_log(k)=iqs;
+    psi_r_log(k) = psi_r;
     Te_log(k)=Te;
 
 end

@@ -1,0 +1,15 @@
+﻿Scopus
+EXPORT DATE: 14 April 2026
+
+Reddy Y.J., Kurt H., Tiwari A., Kaur U., Gautam Lade S., Waghmare V.
+AUTHOR FULL NAMES: Reddy, Yeruva Jaipal (59707971000); Kurt, Hüseyin (57947315100); Tiwari, Ankita (57205246045); Kaur, Ushveen (58854382500); Gautam Lade, Sangita (60550215700); Waghmare, Vrushali (57202980044)
+59707971000; 57947315100; 57205246045; 58854382500; 60550215700; 57202980044
+Optimization of IOT-Based Energy Management Systems Using Machine Learning Algorithms in Smart Buildings
+(2026) International Journal of Drug Delivery Technology, 16 (12), pp. 721 - 729, Cited 0 times.
+DOI: 10.25258/ijddt.16.12s.86
+https://www.scopus.com/inward/record.uri?eid=2-s2.0-105034541669&doi=10.25258%2fijddt.16.12s.86&partnerID=40&md5=9a82057605a3291a151f6c05b9319ec0
+
+DOCUMENT TYPE: Article
+PUBLICATION STAGE: Final
+SOURCE: Scopus
+
